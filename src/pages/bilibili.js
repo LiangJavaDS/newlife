@@ -4,7 +4,7 @@ import CommentList from '@/components/CommentList.jsx'
 
 class A extends React.Component {
     state = {
-        repoName: '',
+        repoName: '', 
         repoUrl: ''
     }
 
