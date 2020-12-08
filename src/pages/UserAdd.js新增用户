@@ -1,0 +1,93 @@
+import React from 'react';
+import { Form, Input, Button, Checkbox } from 'antd';
+
+import {connect} from 'dva';
+const namespace='userList';
+
+const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 10 },
+  };
+  const tailLayout = {
+    wrapperCol: { offset: 8, span: 10 },
+  };
+
+  const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
+  };
+  
+  const mapStateToProps = (state)=>{//获取model中的数据
+	let UserData = state[namespace].UserData;
+    let UserNo = state[namespace].UserNo;
+    let User = state[namespace].User;
+    return {UserData:UserData,UserNo:UserNo,User:User}
+    console.log(UserData);
+};
+
+const mapDispatchToProps= (dispatch)=>{//获取model中的方法
+	return{
+		add(param){
+			dispatch({type:namespace+'/add',...param})	
+		},
+		init(){
+			dispatch({type:namespace+'/initData'})
+		}
+	}
+}
+@connect(mapStateToProps,mapDispatchToProps)
+class UserAdd extends React.Component{
+    // 大坑
+      onFinish =(values)=> {
+        console.log('Success:', values);
+        this.props.add(values)
+    }
+    render(){
+        return(
+          
+             <Form
+            {...layout}
+            name="basic"
+            initialValues={{ remember: true }}
+            onFinish={this.onFinish}
+            onFinishFailed={onFinishFailed}
+            >
+            <Form.Item
+                label="姓名"
+                name="name"
+                rules={[{ required: true, message: '请输入你的姓名或用户名!' }]}
+            >
+                <Input value={this.props.User.name}/>
+            </Form.Item>
+            <Form.Item
+                label="年龄"
+                name="age"
+                rules={[{ required: true, message: '请输入你的年龄!' }]}
+            >
+                <Input value={this.props.User.age} />
+            </Form.Item>
+            <Form.Item
+                label="地址"
+                name="address"
+                rules={[{ required: true, message: '请输入你的地址!' }]}
+            >
+                <Input value={this.props.User.address}/>
+            </Form.Item>
+            <Form.Item
+                label="标签"
+                name="tags"
+                rules={[{ required: true, message: '添加标签!' }]}
+            >
+                <Input value={this.props.User.address}/>
+            </Form.Item>
+            
+
+            <Form.Item {...tailLayout}>
+                <Button type="primary" htmlType="submit" >
+                新增
+                </Button>
+            </Form.Item>
+         </Form>
+        )
+    }
+}
+export default UserAdd;
