@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js'
-
+//消息订阅和发布机制
 父组件
     子组件1,
     子组件2,
