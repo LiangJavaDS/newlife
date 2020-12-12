@@ -1,0 +1,18 @@
+import PubSub from 'pubsub-js'
+
+父组件
+    子组件1,
+    子组件2,
+    子组件3,
+
+子组件1
+//放到一个函数内调用，msg为频道名称，message为要发送的信息
+//发送message至频道msg
+    PubSub.publish(msg,data)
+
+子组件2
+//msgs为频道名称组成的数组，可订阅一个或多个频道
+//第二个参数为一个回调函数
+    PubSub.subscribe(msgs,(msg,data)=>{
+        做一些事情,如this.setState({data})
+    })
