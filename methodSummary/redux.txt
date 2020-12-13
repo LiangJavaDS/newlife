@@ -1,0 +1,29 @@
+1.redux是什么？
+    redux是一个独立专门用于做状态管理的JS库（不是react插件库）
+    和react适配度高，所以多用于react项目中，别的也能用（如Android、vue等）
+2.作用：
+    集中管理react中多个组件共享的状态
+3.redux的流程
+    react部分：ReactComponent
+    redux部分：ActionCreator => Store => Reducers
+自述流程：
+    a)读状态：（1）ReactComponent从Store中读取state
+    b)修改状态：
+    （2）ReactComponent和ActionCreator ：
+        ReactComponent中可以写dispatch（action）
+    （3）ActionCreator和Store ：
+        通过dispatch（action），分发事件，通知dispatch更新状态
+        action两个属性：
+            type：事件名（固定的）
+            data：数据（如删除时需要传的下标）
+    （4）Store和Reducer:
+        Reducers接受（oldState，action），oldState是（之前的状态），action是啥？
+        Reducers给Store返回一个newState（新的状态）
+    c)人为操作的状态，（3）和（4）
+4.什么时候需要用redux？
+    某个组件的状态需要共享
+    某个状态需要在任何地方拿到
+    一个组件需要改变全局的状态
+    一个组件需要改变另一个组件的状态（切换logo就是这么实现的）
+
+
