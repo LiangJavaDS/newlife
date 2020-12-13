@@ -12,6 +12,7 @@ class Father extends React.Component {
         this.state={
             value:null
         }
+        //为了使页面刷新不得不改变下state
         store.subscribe(()=>{
             this.setState({value:store.getState()})
         })

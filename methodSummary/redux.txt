@@ -12,12 +12,12 @@
     （2）ReactComponent和ActionCreator ：
         ReactComponent中可以写dispatch（action）
     （3）ActionCreator和Store ：
-        通过dispatch（action），分发事件，通知dispatch更新状态
+        通过dispatch（action），分发事件，通知store更新状态
         action两个属性：
             type：事件名（固定的）
             data：数据（如删除时需要传的下标）
     （4）Store和Reducer:
-        Reducers接受（oldState，action），oldState是（之前的状态），action是啥？
+        Reducers接受（oldState，action），oldState是（之前的状态），action是一个对象{type:'',data:data}
         Reducers给Store返回一个newState（新的状态）
     c)人为操作的状态，（3）和（4）
 4.什么时候需要用redux？
@@ -25,5 +25,35 @@
     某个状态需要在任何地方拿到
     一个组件需要改变全局的状态
     一个组件需要改变另一个组件的状态（切换logo就是这么实现的）
-
-
+5.常用函数
+父组件
+    import {createStore} from 'redux'
+    import { counter } from '@/redux/reducers.js'
+    import App from '@/components/redux/app.jsx'
+        //生成一个store对象,()内是reducer中function的名字
+        let store = createStore(counter)
+        //将store对象传给子组件
+        <App store={store}/>
+子组件
+    //获取reducer中state的值
+    let a = this.props.store.getState()
+    //调用reducer更改store中的state，{}内是一个action对象。type对应的是要做的事情的名字，可以通过action.type取值；num是传给reducer的数据，可以通过action.data取值
+    this.props.store.dispatch({type:'INCREMENT',data:num})
+reducers
+    //每个文件默认只能由export default function
+    export function counter(state = 0,action){
+        switch(action.type){
+            case:'INCREMENT':
+                return state + action.data
+            case:'DECREMENT':
+                return state - action.data
+            default：
+                return state
+        }
+    }
+最后父组件
+    当store中的数据发生变化就会调用subscribe
+    最后在父组件中使用store.subscribe(()=>{
+        this.setState({value:store.getState()})
+    })
+    单纯是为了更改父组件的state让页面重新render
