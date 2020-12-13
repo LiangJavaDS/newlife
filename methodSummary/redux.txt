@@ -57,3 +57,9 @@ reducers
         this.setState({value:store.getState()})
     })
     单纯是为了更改父组件的state让页面重新render
+
+6.redux进一步划分模块
+    store.js createStore创建store对象
+    reducers.js 改变store的函数，可以接受action={type:'',data:data}，通过return更改数据
+    action.js   存放action对象，export const increment = (num)=>({type:''，data:num})
+    reducers-type.js 存放type的名字，将字符串赋给一个变量

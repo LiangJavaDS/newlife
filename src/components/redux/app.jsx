@@ -1,5 +1,5 @@
 import React from 'react'
-import { INCREMENT, DECREMENT } from '@/redux/action-types.js'
+import * as actions from '@/redux/actions.js'
 
 class App extends React.Component {
 
@@ -7,14 +7,14 @@ class App extends React.Component {
         //1.获取点击一次要加减的值
         let num = Number(this.select.value)
         //2.调用store的方法更新状态
-        this.props.store.dispatch({ type: INCREMENT, data: num })
+        this.props.store.dispatch(actions.increment(num))
     }
 
     handleSub = () => {
         //1.获取选择加减的数量
         let num = Number(this.select.value)
         //2.调用store的方法更新状态
-        this.props.store.dispatch({ type: DECREMENT, data: num })
+        this.props.store.dispatch(actions.decrement(num))
     }
 
     handleOdd = () => {
@@ -24,7 +24,7 @@ class App extends React.Component {
         let count = this.props.store.getState()
         if (count % 2 == 1) {
             //3.进行运算，更新状态
-            this.props.store.dispatch({ type: INCREMENT, data: num })
+            this.props.store.dispatch(actions.increment(num))
         }
     }
 
@@ -34,7 +34,7 @@ class App extends React.Component {
         //2.设置定时器更新状态
         setTimeout(() => {
             //3.调用store的方法更新状态
-            this.props.store.dispatch({ type: INCREMENT, data: num })
+            this.props.store.dispatch(actions.increment(num))
         }, 1000)}
 
         render() {
