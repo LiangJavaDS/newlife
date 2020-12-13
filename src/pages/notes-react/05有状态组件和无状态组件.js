@@ -1,8 +1,8 @@
 import React from "react";//创建组件、生命周期、虚拟DOM元素
 // import React,{Component} from 'react'//另外一种写法
 import ReactDom from "react-dom"//把创建好的组件和虚拟DOM放到页面上展示的
-import './03-calss继承'
-import Movie  from './04Movie组件.js'
+import '@/pages/notes-react/03-calss继承'
+import Movie  from '@/pages/notes-react/04Movie组件.js'
 
 
 //class组件有自己的私有数据和生命周期函数,有状态组件

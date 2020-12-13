@@ -1,5 +1,5 @@
 import React from 'react'
-import CommentAdd from '../components/CommentAdd.jsx'
+import CommentAdd from '@/components/CommentAdd.jsx'
 import CommentList from '@/components/CommentList.jsx'
 
 class A extends React.Component {
