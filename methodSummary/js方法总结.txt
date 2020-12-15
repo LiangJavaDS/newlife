@@ -20,3 +20,6 @@ JSON.parse(obj，replacer，space)
 
 js中filter用法 
     https://www.cnblogs.com/aidixie/p/11283714.html
+
+js的reduce方法
+    https://www.cnblogs.com/amujoe/p/11376940.html
