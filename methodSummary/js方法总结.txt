@@ -17,3 +17,6 @@ JSON.parse(obj，replacer，space)
 
 对象遍历输出 
     key可以通过parseInt转为数字类型的元素，按数字升序排列，其余的按构建顺序排列。
+
+js中filter用法 
+    https://www.cnblogs.com/aidixie/p/11283714.html
