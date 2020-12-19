@@ -1,0 +1,16 @@
+抛砖引玉：
+     1. react没有考虑数据的流向问题，故出现redux,处理数据的流向和存储提出store的概念（仓库），但redux没有考虑异步数据，
+     故出现了基于redux的中间件redux-saga。
+     2. dva基于redux和redux-saga的数据流方案。为了简化开发体验，dva内置了react-router与路由相关。
+     3. umi以路由为基础的，同时支持配置路由和约定式路由。
+     4. 数据的改变发送通常是通过用户交互行为或浏览器行为（如浏览器跳转等）触发的，当此类行为会改变数据的时候可以通过dispatch分发一个action，
+     如果是同步行为会直接通过reducers改变state，如果是异步行为（影响、副作用）会先触发effects，然后流向reducers，最终改变store中的state。
+     5. 数据分类：
+        公共数据，redux中的store中的state，公共数据又分为同步数据（reducer不需要依赖别人），异步数据（effect调取后端接口），
+                得到异步数据后不能直接返给页面，需要中转至同步数据上。
+        私有数据，calss组件中的state
+     6. reducer，仓库store返回数据给页面的唯一出口，相当于水龙头，水就是数据
+        effect，（影响，副作用）：异步调用reducer，调接口
+        service，（服务）：调用后端接口，不仅effect可以通过call（召唤）调用，话可以在页面直接调用service
+        dva，提出订阅的概念，subscription，可以通过dispatch触发effect
+        调用dispatch（分派）触发effect，effect通过put触发reducer进而改变store中的state（公有数据），reducer通过connect链接页面。
