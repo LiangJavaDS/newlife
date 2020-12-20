@@ -1,0 +1,20 @@
+.list-table{
+    width: 850px;
+    margin: 0 auto;/* auto是指平分剩余空间 */
+    margin-top: 5%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px ;
+}
+.myDiv{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+    margin: auto;/* auto是指平分剩余空间 */
+    background-color: red;
+    border: 1px solid black;
+}

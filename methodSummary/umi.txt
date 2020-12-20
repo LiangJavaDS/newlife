@@ -2,7 +2,7 @@
      1. react没有考虑数据的流向问题，故出现redux,处理数据的流向和存储提出store的概念（仓库），但redux没有考虑异步数据，
      故出现了基于redux的中间件redux-saga。
      2. dva基于redux和redux-saga的数据流方案。为了简化开发体验，dva内置了react-router与路由相关。
-     3. umi以路由为基础的，同时支持配置路由和约定式路由。
+     3. umi是底层前端框架，以路由为基础的，同时支持配置路由和约定式路由。声明式路由<Link to="/list">Go to list page</Link>，命令式路由import { history } from 'umi'; history.push('/list');
      4. 数据的改变发送通常是通过用户交互行为或浏览器行为（如浏览器跳转等）触发的，当此类行为会改变数据的时候可以通过dispatch分发一个action，
      如果是同步行为会直接通过reducers改变state，如果是异步行为（影响、副作用）会先触发effects，然后流向reducers，最终改变store中的state。
      5. 数据分类：
