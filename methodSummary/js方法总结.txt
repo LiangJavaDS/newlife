@@ -23,3 +23,54 @@ js中filter用法
 
 js的reduce方法
     https://www.cnblogs.com/amujoe/p/11376940.html
+
+箭头函数
+    const a = param => {
+        return{
+            name:'zhang'
+        }
+    }
+
+    可简写为
+        const a = param => ({
+            name:'zhang '
+        })
+
+
+    const b = param => ({
+        return true
+    })
+        可简写为
+            const b = param => true
+
+析构赋值
+    const obj = {a:1,b:2,c:3}
+    const {a,b,c} = obj和const {a,b,...rest} = obj的区别
+
+JSON转换
+    const obj = {a:1,b:2,c:3}
+    const b = JSON.stringify(obj)//转化为JSON字符串，用于当一个对象想显示时（对象不能直接显示），执行此句将对象转化为JSON字符串
+    b = {"a":1,"b":2,"c" :3}
+    const c = JSON.parse(b)//解析为对象
+    c = {a:1,b:2,c:3}
+
+普通函数和箭头函数  
+    1.外形不同
+
+    2.普通函数可以有具体函数也可以有匿名函数,而箭头函数全是匿名函数
+        具体函数：
+            function func () {
+
+            }
+        匿名函数：
+            let func = function () {
+                
+            }
+
+    3.普通函数可以用于构造函数，箭头函数不能用作构造函数
+
+    4.箭头函数中this的指向不同
+        普通函数，this指向调用它的对象或者创建的对象实例
+        箭头函数，本身没有this，在声明时可以捕获别人的this供自己使用（捕获它所处作用域中的this，并且this一旦捕获，以后将不再变化）
+    
+
