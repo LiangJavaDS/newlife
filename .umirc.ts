@@ -1,0 +1,16 @@
+import { defineConfig } from 'umi';//umi框架，优先来这里读取路由.configure.js
+ 
+export default defineConfig(
+    {   
+        nodeModulesTransform: {
+            type: 'none',
+        },
+        //配置代理能力
+        proxy: {
+            '/api': {
+              'target': 'http://public-api-v1.aspirantzhang.com/',
+              'changeOrigin': true,
+              'pathRewrite': { '^/api' : '' },
+            },
+          },
+    });
