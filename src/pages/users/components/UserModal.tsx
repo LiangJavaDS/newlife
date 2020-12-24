@@ -3,10 +3,10 @@ import { Modal, Button, Form, Input } from 'antd'
 
 export const UserModal = (props) => {
     const [form] = Form.useForm()
-    const { record, visible, handleOk, handleCancel,onFinish } = props
+    const { record, visible, handleOk, handleCancel, onFinish } = props
     //当visible变化的时候调用箭头函数
     useEffect(() => {
-        form.setFieldsValue(record)
+        record ? form.setFieldsValue(record) : form.resetFields()
     }, [visible])
 
     const onOk = () => {
