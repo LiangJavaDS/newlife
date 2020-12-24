@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Table, Tag, Space } from 'antd';
 import { connect } from 'dva'
 import { UserModal } from '@/pages/users/components/UserModal.tsx'
-const index = ({ users }) => {
+const index = ({ users, dispatch }) => {
     //数组第一个参数变量名，第二个参数函数
     const [modalVisible, setModalVisible] = useState(false)//初始值
     const [record, setRecord] = useState(null)
@@ -39,7 +39,7 @@ const index = ({ users }) => {
             render: (text, record) => {
                 return <span>
                     <a onClick={() => { setModalVisible(true); setRecord(record) }}>Edit</a>&nbsp;&nbsp;&nbsp;
-                    <a>Delete</a>
+                    <a >Delete</a>
                 </span>
             }
         },
@@ -47,17 +47,24 @@ const index = ({ users }) => {
 
     const closeModal = () => { setModalVisible(false) }
 
+    const onFinish = values => {
+        let id = record.id
+        dispatch({
+            type: 'users/edit',
+            payload: {values,id}
+        })
+    };
+
     return (
         <div className='list-table'>
-            <Table columns={columns} dataSource={users.data} rowKey='id'/>
-            <UserModal record={record} visible={modalVisible} handleOk={closeModal} handleCancel={closeModal} />
+            <Table columns={columns} dataSource={users.data} rowKey='id' />
+            <UserModal record={record} visible={modalVisible} handleOk={closeModal} handleCancel={closeModal} onFinish={onFinish} />
         </div>
     )
 }
 //let users = store.users等价于let {users} = store
 //namespace的名字
 const mapStateToProps = ({ users }) => {
-    // console.log('7878users', users)
     return {
         users//model的数据
     };

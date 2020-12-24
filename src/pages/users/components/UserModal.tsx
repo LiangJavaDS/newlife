@@ -3,23 +3,33 @@ import { Modal, Button, Form, Input } from 'antd'
 
 export const UserModal = (props) => {
     const [form] = Form.useForm()
-    const {record,visible,handleOk,handleCancel} = props
+    const { record, visible, handleOk, handleCancel,onFinish } = props
     //当visible变化的时候调用箭头函数
-    useEffect(() => { 
-        form.setFieldsValue(record) 
+    useEffect(() => {
+        form.setFieldsValue(record)
     }, [visible])
+
+    const onOk = () => {
+        form.submit()
+    }
+
+    const onFinishFailed = errorInfo => {
+        console.log('Failed:', errorInfo);
+    };
+
     return (
         <Modal
             title='UserModal'
             visible={visible}
-            onOk={handleOk}
+            onOk={onOk}
             onCancel={handleCancel}
             forceRender
         >
-
             <Form
                 name="basic"
                 form={form}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
             >
                 <Form.Item
                     label="Name"

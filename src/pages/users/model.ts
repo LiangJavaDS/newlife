@@ -1,5 +1,5 @@
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
-import { getRemoteList } from '@/pages/users/service.ts'
+import { getRemoteList, editRecord } from '@/pages/users/service.ts'
 // export interface IndexModelState {
 //     name: string;
 // }
@@ -26,11 +26,14 @@ const UserModel = {
             const data = yield call(getRemoteList)
             yield put({
                 type: 'getList',
-                payload: data 
+                payload: data
             })
             // yield put()//调用reducer中的方法，因为是异步的所以要加yield，等一会儿
             //实际effects是没有返回值的，因为返回数据的只能是reducer
         },
+        *edit({ payload: { id, values } }, { put, call }) {
+            const data = yield call(editRecord, id, values)
+        }
     },
 
     subscriptions: {
