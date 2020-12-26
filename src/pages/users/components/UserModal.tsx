@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react'
-import { Modal, Button, Form, Input } from 'antd'
+import { Modal, Form, Input, message } from 'antd'
+import { SingleUserType, FormValues } from '@/pages/users/data.d';
 
-export const UserModal = (props) => {
+interface UserModalProps {
+    record: SingleUserType
+    visible: boolean,
+    handleCancel: () => void,
+    onFinish: (values: FormValues) => void,
+}
+
+export const UserModal = (props: UserModalProps) => {
     const [form] = Form.useForm()
-    const { record, visible, handleOk, handleCancel, onFinish } = props
+    const { record, visible, handleCancel, onFinish } = props
     //当visible变化的时候调用箭头函数
     useEffect(() => {
         record ? form.setFieldsValue(record) : form.resetFields()
@@ -13,7 +21,8 @@ export const UserModal = (props) => {
         form.submit()
     }
 
-    const onFinishFailed = errorInfo => {
+    const onFinishFailed = (errorInfo: any) => {
+        message.error(errorInfo.errorFields[0].errors[0])   
         console.log('Failed:', errorInfo);
     };
 
