@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX的demo</title>
+</head>
+
+<body>
+    <div id='test'></div>
+    <!-- 引入是有顺序的 -->
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src='../js/react.development.js'></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src='../js/babel.min.js'></script>
+
+    <!-- 此处一定要写babel -->
+    <script type="text/babel">
+        /*
+            [js表达式] 和 [js语句(代码)]的区别:
+            1.js表达式
+            有返回值,可以定义一个变量去接受的
+            const x =   (1) a (a是一个变量名,即使未定义也是返回了undefined)
+                        (2) a+b
+                        (3) demo(1)//这是一个方法,如果方法内没有返回值则会return undefined
+                        (4) arr.map()//如果没有返回值,则是undefined的数组
+                        (5) function(){}//定义一个函数返回的就是一个function
+            2.js语句
+            无返回值,如(控制代码走向)
+            (1)if(){}
+            (2)for(){}
+            (3)switch(){
+                case:xxxx
+            }
+        */
+        const data = ['tom', 'jack', 'vue']
+        const VDOM = (
+            <div>
+                <h1>JSX的demo</h1>
+                <ul>
+                    {
+                        // 此处只能写js的表达式
+                        data.map((item, index) => {
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+            </div>
+        )
+        ReactDOM.render(VDOM, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

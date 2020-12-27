@@ -1,0 +1,33 @@
+1.react推荐但不强制使用jsx，什么是jsx？
+    jsx是js的语法扩展，它具有js的全部功能
+    jsx语法上更接近js而不是HTML，所以ReactDom使用小驼峰来定义属性名，而不使用HTML属性名称的命名约定。如JSX中的class变成calssName，而 tabindex 则变为 tabIndex。
+2.jsx出现的目的?
+    更容易的创建虚拟DOM
+3.jsx的依赖？
+    Babel(jsx转js，es6转es5),因为浏览器不识别jsx、es6
+4.jsx表示什么？
+    对象，Babel会把JSX转译成一个名为React.createElement()函数调用
+    注:React.createElement()创建虚拟DOM,document.createElement()创建真实DOM
+    const element = (<h1 className='greeting'>Hello World</h1>);
+    等同于
+    const element = React.createElement('h1',{className:'greeting'},'Hello,World!')
+    实际上创建了一个对象
+    const element = {
+        type:'h1',
+        props:{
+            className:'greeting',
+            children:'Hello,World'
+        }
+    }
+    这样的对象被称为'React元素'
+5.xml可扩展标记语言
+    xml早期用于存储和传输数据,如存储一个学生的信息:
+        <student>
+            <name>张三</name>
+            <age>18</age>
+        </student>
+    因为太繁琐改为JSON格式存储
+        "{"name":"张三","age":"18"}"
+    JSON的两种好用的方法:
+        JSON.parse()将JSON字符串解析为js的对象或数组
+        JSON.stringfy()将js里的数组和对象转成JSON字符串
