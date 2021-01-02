@@ -1,0 +1,37 @@
+点进去一个仓库
+1.左上角是用户名/仓库名，一个开源项目对应一个仓库
+2.右上角watch是关注，可以下次找到关注的项目，
+	star时点星，通常100颗star就很厉害了，
+	fork将别人的仓库复制克隆到自己的仓库，仓库名一致，但仓库名下会显示fork from XXX，
+3.tab页
+	code，可以看到当前仓库的开源项目的代码，
+		main，分支名，
+		branch，分支个数，
+		tags，？？？，
+		Go to file,根据文件名寻找文件，快捷键T(不区分大小写)
+		Add file，
+			Create new file,创建一个新的文件，
+			Upload files，上传文件（可以选择本地路径或者拖拽文件，可上传多个文件），上传文件时，下方的Commit changes可以显示本次上传文件的描述。
+		Code（下载标志）
+4.文件内容
+	文件名  文件提交时的描述
+	README.md  关于本仓库的描述性文件
+5.点进去一个文件后，可以编辑和删除此文件，对应的Edit一杆笔，Delete一个垃圾桶
+	
+6.安装git，Git Bash Here 命令行模式
+	   Git GUI Here 图文模式
+7.git的三个区域 工作区=>暂存区=>git仓库
+	工作区：本地的增加删除和修改，暂存区：暂存已修改的文件最后统一放到git仓库，Git仓库：最终确定下来的文件保存到仓库，成为一个新的版本，并对他人可见。
+	git status 查看当前工作区和暂存区的状态，git add 文件名，将工作区的文件提交到暂存区，git commit -'描述信息'，将暂存区的文件提交到Git仓库
+8.git的初始化
+	git config --global user.name '用户名'，以后提交文件到GitHub上显示的用户名，最好github的用户名（唯一），此命令也可以用来修改。
+	git config --global user.email '邮箱名'，此命令也可以用来修改。
+	git config --list,查看配置的信息。
+9.将本地仓库推送到远程仓库
+	本地文件夹初始化，使用git init；
+	添加所有文件交 git add .     git commit -m “init commit”；
+	关联远程仓库git remote add origin https://github.com/仓库名。。。(仓库地址链接).git;
+	推送文件git push -u origin master （推送文件至关联仓库的master分支）
+10.Linux相关命令
+	cd 文件夹名称，全拼：change directory（进入文件夹）, mkdir 文件夹名称，全拼 make directory （创建新文件夹），touch 文件名.文件类型（创建新文件）
+	
