@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+</head>
+
+<body>
+    <div id='test'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        class Weather extends React.Component {
+            //构造函数初始调用一次
+            constructor(props) {
+                super(props),
+                //关于this的操作必须放在super()后面，console可以放在super()前
+                    this.state = {
+                        isCold: true
+                    }
+                //此句的作用将changeWeather从Weather类原型上copy一份至Weatherd实例上
+                //解决this的指向问题
+                this.changeWeather = this.changeWeather.bind(this)
+            }
+            //render调用1+n次，n是state改变的次数
+            render() {
+                // console.log(this)
+                let { isCold } = this.state
+                //changeWeather放在了类的原型对象上，供实例调用
+                //由于changeWeathe时作为onClick的回调，不是实例调用而是直接调用
+                //类中的方法默认开启了局部的严格模式，所以changeWeather的this不是window而是undefined
+                return 
+                <h1 onClick={this.changeWeather}>今天的天气很{isCold ? '寒冷' : '炎热'}</h1>
+            }
+            //点几次掉几次
+            changeWeather() {
+                const { isCold } = this.state
+                this.setState({ isCold: !isCold })
+            }
+        }
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

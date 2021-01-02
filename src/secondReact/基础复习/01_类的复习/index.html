@@ -11,11 +11,11 @@
     <div id='test'></div>
     <!-- 引入是有顺序的 -->
     <!-- 引入react核心库 -->
-    <script type="text/javascript" src='../js/react.development.js'></script>
+    <script type="text/javascript" src='../../js/react.development.js'></script>
     <!-- 引入react-dom，用于支持react操作DOM -->
-    <script type="text/javascript" src='../js/react-dom.development.js'></script>
+    <script type="text/javascript" src='../../js/react-dom.development.js'></script>
     <!-- 引入babel，用于将jsx转为js -->
-    <script type="text/javascript" src='../js/babel.min.js'></script>
+    <script type="text/javascript" src='../../js/babel.min.js'></script>
 
     <!-- 此处一定要写babel -->
     <script type="text/babel">
@@ -42,7 +42,7 @@
             */
 
             speak() {
-                console.log(`我的名字是${this.name},我的年龄是${this.age},我读${this.grade}`) 
+                console.log(`我的名字是${this.name},我的年龄是${this.age},我读${this.grade}`)
             }
         }
 
@@ -56,8 +56,21 @@
         p1.speak()
         p2.speak()
         p1.speak.call(a)
-        const s1 = new Student('张三',18,'高三')
+        const s1 = new Student('张三', 18, '高三')
         s1.speak()
+
+        class Car {
+            constructor(name, price) {
+                this.name = name
+                this.price = price
+            }
+            //类中可直接写赋值语句，如下代码含义是：给Car的实例对象添加一个属性，名为a，值为1
+            a = 1
+        }
+        const c1 = new Car('奔驰c63', 299)
+        console.log(c1)
+        const c2 = new Car('桑塔纳', 299)
+        console.log(c2)
     </script>
 </body>
 
