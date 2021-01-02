@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类</title>
+</head>
+
+<body>
+    <div id='test'></div>
+    <!-- 引入是有顺序的 -->
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src='../js/react.development.js'></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src='../js/babel.min.js'></script>
+
+    <!-- 此处一定要写babel -->
+    <script type="text/babel">
+        class Person {
+            constructor(name, age) {
+                this.name = name,
+                    this.age = age
+            }
+            //speak方法放在了哪，类的原型对象上，供实例对象使用
+            speak() {
+                //通过Person实例调用speak时，speak中的this就是Person实例
+                console.log(`我的名字是${this.name},我的年龄是${this.age}`)
+            }
+        }
+
+        class Student extends Person {
+            constructor(name, age, grade) {
+                super(name, age)
+                this.grade = grade
+            }
+            /*
+            1.类中的构造器不是必须要写的，要对实例进行一些初始化的操作，如添加指定属性时才写
+            2.类中的所定义的方法，都是放在了类的原型对象上，供实例去使用
+            */
+
+            speak() {
+                console.log(`我的名字是${this.name},我的年龄是${this.age},我读${this.grade}`) 
+            }
+        }
+
+        let a = {
+            name: 1111,
+            age: 222
+        }
+        const p1 = new Person('tom', 18)
+        const p2 = new Person('jack', 16)
+        console.log(p1)
+        p1.speak()
+        p2.speak()
+        p1.speak.call(a)
+        const s1 = new Student('张三',18,'高三')
+        s1.speak()
+    </script>
+</body>
+
+</html>
