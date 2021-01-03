@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_createRef</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+            /*
+            (1)通过onXxx属性指定事件处理函数（注意大小写）
+                a.React使用的是自定义（合成）事件，而不是使用的原生DOM事件---为了更好的兼容性。
+                b.React中的事件是通过事件委托的方式处理的（委托给组件最外层的元素）----为了高效
+                事件委托：li标签内是导航栏不同的点击事件，可以将li的点击事件放到ul上，这就是事件委托
+                <ul>
+                    <li></li>    
+                    <li></li>    
+                    <li></li>    
+                </ul>
+            (2)通过event.target得到发生事件的DOM元素对象----不要过度使用ref
+            */
+
+            myRef1 = React.createRef()
+
+            handleClick = () => {
+                alert(this.myRef1.current.value)
+            }
+
+            handleOnBlur = (event) => {
+                alert(event.target.value)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <input type='text' placeholder='点击按钮提示数据' onChange={this.handleChange} ref={this.myRef1} />
+                        <button onClick={this.handleClick}>提交输入框内的内容</button>
+                        <input type='text' placeholder='失去焦点提示数据' onBlur={this.handleOnBlur} />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>

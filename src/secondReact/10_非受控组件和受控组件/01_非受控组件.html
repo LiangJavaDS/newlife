@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_受控组件</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Login extends React.Component {
+
+            handleSubmit = (event) => {
+                console.log(event)
+                event.preventDefault()
+                const { userName, passWord } = this
+                alert(`用户名${userName.value},密码${passWord.value}`)
+            }
+
+            render() {
+                return (
+                    //现用现取
+                    <form action='' onSubmit={this.handleSubmit}>
+                        用户名：<input type='text' placeholder='用户名' name='userName' ref={c => this.userName = c} />
+                        密码：<input type='text' placeholder='密码' name='passWord' ref={c => this.passWord = c} />
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<Login />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>
