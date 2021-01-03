@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_createRef</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+
+            myRef1 = React.createRef()
+            myRef2 = React.createRef()
+
+            handleClick = () => {
+                alert(this.myRef1.current.value)
+            }
+
+            handleOnBlur = () => {
+                alert(this.myRef2.current.value)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <input type='text' placeholder='点击按钮提示数据' onChange={this.handleChange} ref={this.myRef1} />
+                        <button onClick={this.handleClick}>提交输入框内的内容</button>
+                        <input type='text' placeholder='失去焦点提示数据' onBlur={this.handleOnBlur} ref={this.myRef2} />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_回调ref中回调执行次数问题</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+
+            state = {
+                value: ''
+            }
+
+            handleClick = () => {
+                alert(this.nameInput.value)
+            }
+
+            handleChange = () => {
+                let { value } = this.nameInput
+                this.setState({ value })
+            }
+
+            handleModify = () => {
+                this.setState({ value: '123' })
+            }
+
+            render() {
+                return (
+                    <div>
+                        {/*内联样式的ref中的回调函数，初始化执行一次，每次更新state会执行两次，第一次执行的参数是null第二次执行的参数是ref所在的dom结点。目的是React为了清空旧的ref并设置新的ref*/}
+                        <input type='text' placeholder='点击按钮提示数据' value={this.state.value} onChange={this.handleChange} ref={input => { this.nameInput = input; console.log('@', input) }} />
+                        <button onClick={this.handleClick}>提交输入框内的内容</button>
+                        <button onClick={this.handleModify}>修改输入框内的内容</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>

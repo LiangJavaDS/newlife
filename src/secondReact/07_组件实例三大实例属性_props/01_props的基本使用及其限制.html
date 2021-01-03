@@ -16,6 +16,15 @@
     <script type="text/javascript" src="../js/prop-types.js"></script>
     <script type="text/babel">
         class Person extends React.Component {
+            /*写构造器的两种作用：
+                1.需要在constructor中初始化state
+                2.需要在constructor中绑定函数，this.a = this.a.bind(this)
+                3.在constructor中使用this.props,如果不传可能this.props会出现undefined
+            */
+            constructor(props){
+                super(props)
+            }
+            
             //对标签属性进行类型和必要性的限制
             static propTypes = {
                 name: PropTypes.string.isRequired,//name为字符串类型，且为必须字段

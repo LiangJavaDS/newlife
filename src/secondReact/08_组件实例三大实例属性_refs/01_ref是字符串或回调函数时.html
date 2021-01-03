@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_ref是字符串形式时</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+
+            state = {
+                value: ''
+            }
+
+            handleClick = () => {
+                alert(this.nameInput.value)
+            }
+
+            handleOnBlur = () => {
+                let { value } = this.refs.onBlurInput
+                alert(value)
+            }
+
+            render() {
+                return (
+                    <div>
+                        {/*回调函数是1.你定义的2.你没调用3，执行了，别人调用了*/}
+                        {/*回调函数是react在执行render（）时帮你调的*/}
+                        {/*ref是回调函数时，参数curentNode是ref所处的dom结点。箭头函数本事没有this，就往外找到当前组件的实例对象，则this是当前组件的实例对象。this中定义了一个nameInput用来接受这个dom节点*/}
+                        <input type='text' placeholder='点击按钮提示数据' ref={curentNode => this.nameInput = curentNode} />
+                        <button onClick={this.handleClick}>提交输入框内的内容</button>
+                        {/*字符串类型的ref效率不高，不能过多使用*/}
+                        <input type='text' placeholder='失去焦点提示数据' ref='onBlurInput' onBlur={this.handleOnBlur}></input>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>

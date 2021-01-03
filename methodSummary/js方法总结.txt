@@ -102,3 +102,8 @@ bind方法：
     speak()//this是window
     const x = speak.bind({a:1,b:2})
     x()//this是{a:1,b:2}
+
+回调函数：
+    1.你定义的函数
+    2.你没有调用
+    3.函数最终执行了（别人在调）
