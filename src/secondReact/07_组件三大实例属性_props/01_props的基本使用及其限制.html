@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props的基本使用</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+            //对标签属性进行类型和必要性的限制
+            static propTypes = {
+                name: PropTypes.string.isRequired,//name为字符串类型，且为必须字段
+                sex: PropTypes.string,//sex为字符串类型
+                age: PropTypes.number,//age为数字类型
+                speak: PropTypes.func//speak为方法
+            }
+            static defaultProps = {
+                sex: '未知',
+                age: 18
+            }
+            render() {
+                //props是只读的
+                const { name, age, sex } = this.props
+                return (
+                    <ul>
+                        <li>姓名：{name}</li>
+                        <li>年龄：{age}</li>
+                        <li>性别：{sex}</li>
+                    </ul>
+                )
+            }
+        }
+
+        let p1 = { name: 'tom', age: 18, sex: '男', speak: speak }
+        let p2 = { name: 'jack', age: 22, sex: '男' }
+        //问：既然展开运算符不能展开对象，那为什么此处传props要{...obj}呢？
+        //答：此处{}是为了写jsx，并且有了react.development.js和babel，使得可以这样写
+        ReactDOM.render(<Person {...p1} />, document.getElementById('test1'))
+        ReactDOM.render(<Person {...p2} />, document.getElementById('test2'))
+
+        function speak() {
+            console.log('我是来自props的speak方法')
+        }
+    </script>
+</body>
+
+</html>
