@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_高阶函数_函数柯里化</title>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Login extends React.Component {
+
+            state = {
+                userName: '',
+                passWord: ''
+            }
+            /*
+            高阶函数：满足以下两点任意一点的函数
+                1.若A函数，接受的参数是一个函数，那么A就被称为高阶函数
+                1.若A函数，调用的返回值是一个函数，那么A就被称为高阶函数
+                常见的高阶函数：Promise(),setTimeout(),arr.map()
+            函数柯里化：通过函数调用继续返回函数的方式，实现多次接受参数最后统一处理的函数编码形式
+            */
+            handleChange = (dataType) => {
+                return (event) => {
+                    this.setState({ [dataType]: event.target.value })
+                }
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault()
+                const { userName, passWord } = this.state
+                alert(`用户名${userName},密码${passWord}`)
+            }
+
+            render() {
+                return (
+                    //根据你的输入变化，最好用受控组件，ref不能用太多
+                    <form action='' onSubmit={this.handleSubmit}>
+                        用户名：<input type='text' onChange={this.handleChange('userName')} placeholder='用户名' name='userName' />
+                        密码：<input type='text' onChange={this.handleChange('passWord')} placeholder='密码' name='passWord' />
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<Login />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>
