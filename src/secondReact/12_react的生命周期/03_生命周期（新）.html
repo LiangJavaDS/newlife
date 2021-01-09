@@ -25,12 +25,12 @@
                 count: 0
             }
 
-            // //若state的值任何时候都取决与props的时候可以使用
-            // static getDerivedStateFromProps(props, state) {
-            //     console.log('getDerivedStateFromProps', props, state)
-            //     return null
-            //     //返回值是null或state对象
-            // }
+            //若state的值任何时候都取决与props的时候可以使用
+            static getDerivedStateFromProps(props, state) {
+                console.log('getDerivedStateFromProps', props, state)
+                return null
+                //返回值是null或state对象
+            }
 
             //更新前获取快照，两个参数，之前的props和之前的state
             getSnapshotBeforeUpdate(preProps, preState) {
