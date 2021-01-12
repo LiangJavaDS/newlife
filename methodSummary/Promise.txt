@@ -1,0 +1,12 @@
+Promise是什么？
+    1.抽象表达
+        Promise是JS中进行异步编程的新的解决方案（旧的是谁？）
+    2.具体表达
+        a.从语法上来说：Promise是一个构造函数
+        b.从功能上来说：promise对象用来封装一个异步操作并可以获取其结果
+    3.Promise的状态改变
+        a.pending变为resolved
+        b.pending变为rejected
+        说明：
+        只有这两种，且一个promise对象状态只改变一次，无论成功还是失败，都会有一个结果数据。
+        成功的结果数据一般称为value，失败的结果数据一般称为reason

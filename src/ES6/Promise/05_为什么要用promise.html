@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_为什么要用promise</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.指定回调函数的方式更加灵活：
+            旧的：必须在启动异步任务前指定
+            promise：启动异步任务=》返回promise对象=》给promise对象绑定回调函数(甚至可以在异步任务结束后指定)
+        2.支持链式调用，可以解决回调地狱问题
+            什么是回调地狱？回调函数嵌套调用，外部回调函数异步执行的结果是嵌套的回调函数执行的条件
+            回调函数缺点：不便于阅读/不便于异常处理
+            解决方案?Promise链式调用
+            终极解决方案？async/await
+            )
+        */
+
+        // 2.1回调地狱
+        doFirstThing(function (firstResult) {
+            doSecondThing(firstResult, function (secondResult) {
+                doThirdThing(secondResult, function (finalResult) {
+                    console.log('Final Result:' + finalResult)
+                }, failureCallback)
+            }, failureCallback)
+        }, failureCallback)
+
+        //2.2使用promise的链式调用解决回调地狱
+        doFirstThing()
+            .then(function (firstResult) {
+                return doSecondThing(firstResult)
+            })
+            .then(function (secondResult) {
+                return doThirdThing(secondResult)
+            })
+            .then(function (finalResult) {
+                console.log('Final Result:' + finalResult)
+            })
+            .catch(failureCallback)
+
+        //2.3 async/await:回调地狱的终极解决方案
+        async function request() {
+            try {
+                const firstResult = await doFirstThing()
+                const secondResul = await doSecondThing(firstResult)
+                const finalResult = await doThirdThing(secondResul)
+                console.log('Final Result:' + finalResult)
+            } catch (error) {
+                failureCallback(error)
+            }
+        }
+    </script>
+</body>
+
+</html>

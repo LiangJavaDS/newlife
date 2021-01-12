@@ -39,7 +39,7 @@
                 }, 1000)
             }
 
-            getSnapshotBeforeUpdate() {
+            getSnapshotBeforeUpdate(preProps, preState) {
                 console.log('7878前', this.list.scrollHeight)
                 return this.list.scrollHeight
             }

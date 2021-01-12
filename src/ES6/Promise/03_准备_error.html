@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03准备_error</title>
+</head>
+
+<body>
+    <script>
+        // 1.常见的内置错误
+        // 1)ReferenceError:引用的变量不存在
+        // cosole.log(a)
+
+        // 2) TypeError:数据类型不正确的错误
+        // let b = null  
+        // b.xxx    // Uncaught TypeError: Cannot read property 'xxx' of null
+        // let c = {}
+        // c.xxx()  // Uncaught TypeError: c.xxx is not a function
+
+        //3)RangeError:数据值不在其允许的范围内
+        // function fn() {
+        //     fn()
+        // }
+        // fn()        // Uncaught RangeError: Maximum call stack size exceede
+
+        // 4)SyntaxError:语法错误
+        // const str = """"//Uncaught SyntaxError: Unexpected string
+
+
+        // 2.错误处理
+        // 1).捕获错误:try ... catch
+        // try {
+        //     let d
+        //     console.log(d.xxx)
+        // } catch (error) {
+        //     console.log(error, typeof (error))
+        //     console.log(error.message)
+        //     console.log(error.stack)
+        // }
+        // 抛出错误：throw error
+        function something() {
+            if (Date.now() % 2 === 1) {
+                console.log('当前时间为奇数，可以执行任务')
+            } else {
+                throw new Error('当前时间为偶数，无法执行任务')
+            }
+        }
+        //捕获异常
+        try {
+            something()
+        } catch (error) {
+            console.log('0',error)
+            console.log('1',error.message)
+            console.log('2',error.stack)
+            alert(error.message);
+        }
+
+
+    </script>
+</body>
+
+</html>
