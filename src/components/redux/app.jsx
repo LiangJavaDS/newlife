@@ -35,26 +35,27 @@ class App extends React.Component {
         setTimeout(() => {
             //3.调用store的方法更新状态
             this.props.store.dispatch(actions.increment(num))
-        }, 1000)}
+        }, 1000)
+    }
 
-        render() {
-            const count = this.props.store.getState()
-            return (
+    render() {
+        const count = this.props.store.getState()
+        return (
+            <div>
+                <p>click {count} times</p>
                 <div>
-                    <p>click {count} times</p>
-                    <div>
-                        <select ref={select => this.select = select}>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                        </select>&nbsp;
+                    <select ref={select => this.select = select}>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                    </select>&nbsp;
                     <button onClick={this.handleAdd}>+</button>&nbsp;
                     <button onClick={this.handleSub}>-</button>&nbsp;
                     <button onClick={this.handleOdd}>increment if odd</button>&nbsp;
                     <button onClick={this.handleAsync}>increment async</button>&nbsp;
                 </div>
-                </div>
-            )
-        }
+            </div>
+        )
     }
-    export default App
+}
+export default App

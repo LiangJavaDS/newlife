@@ -45,7 +45,7 @@ class BasicLayout extends React.Component {
                                 <Link to="/userAdd">新增用户</Link>
                             </Menu.Item>
                             <Menu.Item key="3" >
-                                <Link to="/bilibili">B站演习</Link>
+                                <Link to="/bilibili">redux第一遍</Link>
                             </Menu.Item>
                             <Menu.Item key="4" >
                                 <Link to="/users">umi哒哒</Link>

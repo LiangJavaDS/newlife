@@ -37,7 +37,7 @@
             }
 
             //控制组件更新的'阀门',默认true
-            shouldComponentUpdate() {
+            shouldComponentUpdate(nextProps, nextState) {
                 console.log('shouldComponentUpdate')
                 return true
             }
