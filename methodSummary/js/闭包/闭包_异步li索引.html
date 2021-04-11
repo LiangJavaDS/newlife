@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包_异步li索引</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>西瓜</li>
+        <li>火腿</li>
+        <li>方便面</li>
+        <li>红糖糍粑</li>
+    </ul>
+    <script>
+        let arr = document.querySelector('.nav').querySelectorAll('li')
+        for (let i = 0; i < arr.length; i++) {
+            setTimeout(function () {
+                console.log(arr[i].innerHTML)
+            }, 3000)
+        }
+    </script>
+</body>
+
+</html>

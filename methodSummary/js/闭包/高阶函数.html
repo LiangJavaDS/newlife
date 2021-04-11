@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数</title>
+</head>
+
+<body>
+    <script>
+        //1.函数作为参数传给另一个函数，那么接收方就是高阶函数
+        function fn(a, b, callBack) {
+            console.log(a + b)
+            callBack && callBack()
+        }
+        fn(1, 2, function () {
+            console.log('我是第三个参数！')
+        })
+
+        //2.一个函数的返回值是另一个函数
+    </script>
+</body>
+
+</html>

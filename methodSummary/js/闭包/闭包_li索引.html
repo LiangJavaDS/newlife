@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包应用,获得li索引</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>西瓜</li>
+        <li>火腿</li>
+        <li>方便面</li>
+    </ul>
+    <script>
+        // map不能遍历假数组
+        // 1.利用动态添加属性的方式
+        let arr = document.querySelector('.nav').querySelectorAll('li')
+        // for (let i = 0; i < arr.length; i++) {
+        //     arr[i].index = i
+        //     arr[i].onclick = function () {
+        //         console.log(arr[i].index)
+        //     }
+        // }
+
+        //2.利用闭包的方式得到当前小li的索引号 
+        for (let i = 0; i < arr.length; i++) {
+            // for循环形成三个立即执行函数
+            // 立即执行函数也成为小闭包,因为立即执行函数里的任何一个函数都可以使用i变量
+            (function (i) {
+                arr[i].onclick = function () {
+                    console.log(i)
+                }
+            })(i)
+        }
+
+    </script>
+</body>
+
+</html>

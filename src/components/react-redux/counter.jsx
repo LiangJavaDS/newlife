@@ -8,7 +8,7 @@ export default class Counter extends React.Component {
         increment: PropTypes.func.isRequired,
         decrement: PropTypes.func.isRequired,
     }
-
+    
     handleAdd = () => {
         //1.获取点击一次要加减的值
         let num = Number(this.select.value)

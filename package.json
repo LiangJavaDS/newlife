@@ -27,6 +27,7 @@
     "@umijs/test": "^3.2.9",
     "axios": "^0.21.0",
     "lint-staged": "^10.0.7",
+    "nanoid": "^3.1.22",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
     "pubsub-js": "^1.9.1",

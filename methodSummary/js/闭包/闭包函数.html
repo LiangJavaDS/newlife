@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包函数</title>
+</head>
+
+<body>
+    <script>
+        // 1.定义
+        // 闭包函数就是有权访问另一个函数作用域中变量的函数
+        // 简单来说，在一个作用域可以访问另一个函数内部的局部变量
+        // function fn() {
+        //     let num = 10
+        //     function fun() {
+        //         console.log(num)
+        //     }
+        //     fun()
+        // }
+        // fn()
+
+        // 2.在函数fn外部的作用域访问函数fn内部的作用域，通常使用高阶函数(return一个函数)完成
+        // 闭包的主要作用,延伸了变量的作用范围
+        function fn() {
+            let num = 10
+            return function () {
+                console.log(num)
+            }
+        }
+        let f = fn()
+        f()
+    </script>
+</body>
+
+</html>

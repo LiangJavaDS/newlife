@@ -50,6 +50,12 @@ class BasicLayout extends React.Component {
                             <Menu.Item key="4" >
                                 <Link to="/users">umi哒哒</Link>
                             </Menu.Item>
+                            <Menu.Item key="5" >
+                                <Link to="/secondRedux">redux第二遍</Link>
+                            </Menu.Item>
+                            <Menu.Item key="6" >
+                                <Link to="/reactExtension">react扩展</Link>
+                            </Menu.Item>
                         </SubMenu>
                     </Menu>
                 </Sider>

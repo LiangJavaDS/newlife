@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var let const区别</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+    
+                                 var            let            const 
+            1.作用域          函数作用域      块级作用域       块级作用域
+            2.变量提升          存在            不存在          不存在
+            3.值是否可以更改     是              是               否
+        */
+        console.log(a)//先输出再定义不会报错,是undfined,下面不定义则会报错
+        function get() {
+            console.log(a)
+        }
+        var a = 1
+        get()
+    </script>
+</body>
+
+</html>

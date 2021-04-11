@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: 'tom',
+            age: '18',
+            info: {
+                sex: 'man',
+                hight: '175'
+            },
+            arr: ['pink', 'red']
+        }
+
+        function deepCopy(newObj, oldObj) {
+            for (let k in oldObj) {
+                let item = oldObj[k]
+                // 数组
+                if (item instanceof Array) {
+                    newObj[k] = []
+                    deepCopy(newObj[k], item)
+                } else if (item instanceof Object) {
+                    // 对象
+                    newObj[k] = {}
+                    deepCopy(newObj[k], item)
+                } else {
+                    // 基本数据类型
+                    newObj[k] = item
+                }
+            }
+        }
+        let newObj = {}
+        deepCopy(newObj, obj)
+        console.log(newObj)
+    </script>
+</body>
+
+</html>

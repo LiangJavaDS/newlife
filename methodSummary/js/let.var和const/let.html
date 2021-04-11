@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let</title>
+</head>
+
+<body>
+    <script>
+        //1. let出现在es6中用于定义变量,作用于块级作用域,即两个{}中间
+        if (true) {
+            let a = 1
+        }
+        // console.log(a)//报错
+
+        //2. 可以防止循环变量成为全局变量
+        for (let i = 0; i < 2; i++) {
+
+        }
+        // 使用var则i取到值
+        // console.log(i)//报错
+
+        //3. let没有变量提升
+        // console.log(b)//报错
+        // let b = 1
+
+        // 4.暂时性死区,在块级作用域下定义了c则会和let c绑定,不会向外面一层找
+        let c = 2
+        if (true) {
+            // console.log(c)//报错
+            let c = 1
+        }
+    </script>
+</body>
+
+</html>

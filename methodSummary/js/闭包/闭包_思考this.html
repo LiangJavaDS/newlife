@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包_思考this</title>
+</head>
+
+<body>
+    <script>
+        // var和let的区别???
+        var name = 'this window'
+        var obj1 = {
+            name: 'this object1',
+            fun: function () {
+                return function () {
+                    return this.name;
+                };
+            }
+        };
+        // 立即执行函数的this指向window
+        console.log(obj1.fun()())
+
+        var obj2 = {
+            name: 'this object2',
+            fun: function () {
+                var that = this
+                return function () {
+                    return that.name;
+                };
+            }
+        }
+        // this指向函数的调用者
+        console.log(obj2.fun()())
+    </script>
+</body>
+
+</html>

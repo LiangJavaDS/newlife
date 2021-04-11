@@ -35,7 +35,7 @@
                     <div>
                         {/*回调函数是1.你定义的2.你没调用3，执行了，别人调用了*/}
                         {/*回调函数是react在执行render（）时帮你调的*/}
-                        {/*ref是回调函数时，参数curentNode是ref所处的dom结点。箭头函数本事没有this，就往外找到当前组件的实例对象，则this是当前组件的实例对象。this中定义了一个nameInput用来接受这个dom节点*/}
+                        {/*ref是回调函数时，参数curentNode是ref所处的dom结点。箭头函数本身没有this，就往外找到当前组件的实例对象，则this是当前组件的实例对象。this中定义了一个nameInput用来接受这个dom节点*/}
                         <input type='text' placeholder='点击按钮提示数据' ref={curentNode => this.nameInput = curentNode} />
                         <button onClick={this.handleClick}>提交输入框内的内容</button>
                         {/*字符串类型的ref效率不高，不能过多使用*/}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回忆生命周期</title>
+</head>
+
+<body>
+    <div id='root'></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    text: 'hello'
+                }
+                console.log('constructor')
+            }
+
+            componentWillMount() {
+                console.log('componentWillMount')
+            }
+
+            componentDidMount() {
+                console.log('componentDidMount')
+            }
+
+            handleClick = () => {
+                this.setState({ text: 'byebye' })
+            }
+
+            forceChange = () => {
+                this.forceUpdate()
+            }
+
+            shouldComponentUpdate(newProps, newState) {
+                console.log('shouldComponentUpdate')
+                return true
+            }
+
+            componentWillUpdate(newProps, newState) {
+                console.log('componentWillUpdate')
+            }
+
+            componentDidUpdate(preProps, preState) {
+                console.log('componentDidUpdate')
+            }
+
+            componentWillUnmount() {
+                console.log('componentWillUnmount')
+            }
+
+            render() {
+                console.log('render')
+                const { text } = this.state
+                return (
+                    <div>
+                        <h2>{text}，react！</h2>
+                        <button onClick={this.handleClick}>更改</button>
+                        <button onClick={this.forceChange}>强制更改</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo x={123} />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>
