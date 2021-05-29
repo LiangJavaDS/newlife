@@ -39,7 +39,6 @@ class ListData extends React.Component{
 					})}
 				</ul>
 				<button onClick={this.props.add} >添加</button>
-
 			</div>
 		)
 
